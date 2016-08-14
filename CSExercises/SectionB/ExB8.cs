@@ -15,13 +15,16 @@ namespace CSExercises
     {
         public static void Main(string[] args)
         {
-            //YOUR CODE HERE
+            string stringInput = Console.ReadLine();
+            double resultDbl = CalculateFare(Convert.ToDouble(stringInput));
+            Console.WriteLine("{0:#,##0.0}0", resultDbl);
         }
 
         public static double CalculateFare(double distance)
         {
-            //YOUR CODE HERE
-            return 0;
+            double resultDbl = 2.40 + 0.4 * distance;
+            double result = 2.40 + 0.4 * distance;
+            return result;
 
         }
     }

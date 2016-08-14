@@ -24,8 +24,9 @@ namespace CSExercises
 
         public static int square(int x)
         {
-            //PUT YOUR CODE HERE
-            return 0;
+            double squaredNum = Math.Pow(x, 2);
+
+            return Convert.ToInt32(squaredNum);
 
         }
     }
