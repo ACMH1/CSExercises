@@ -17,16 +17,30 @@ namespace CSExercises
     {
         public static void Main(string[] args)
         {
-            //YOUR CODE HERE
-
+            string strInput = Console.ReadLine();
+            int intInput = Convert.ToInt32(strInput);
+            bool result = IsArmstrongNumber(intInput);
+            Console.WriteLine(result);
         }
 
 
         public static bool IsArmstrongNumber(int n)
         {
-            //YOUR CODE HERE
-            return false;
+            int firstDigit = n / 100;
+            int secondDigit = (n - firstDigit * 100) / 10;
+            int thirdDigit = n - firstDigit * 100 - secondDigit * 10;
 
+            int armstrongSum =    Convert.ToInt32(Math.Pow(firstDigit, 3)) 
+                                + Convert.ToInt32(Math.Pow(secondDigit, 3)) 
+                                + Convert.ToInt32(Math.Pow(thirdDigit, 3));
+            if (armstrongSum == n)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -21,24 +21,48 @@ namespace CSExercises
 
     //Write a program that would prompt the user successively 
     //the three product codes viz., TV, DVD, MP3 and after each prompt, 
-    //the user enters the order quantity for that product.  
-    //Then apply the price computations.  (Obviously, if the user does not 
     //wish to order the item prompted he/she would enter a zero for the order quantity).
 
+    //the user enters the order quantity for that product.  
+    //Then apply the price computations.  (Obviously, if the user does not 
     public class ExC6
     {
         public static void Main(string[] args)
         {
-            //YOUR CODE HERE - get user input, call the function and return the discounted price
+            Console.WriteLine("Enter number of TVs: ");
+            string strTV = Console.ReadLine();
+            int intTV = Convert.ToInt32(strTV);
+            Console.WriteLine("Enter number of DVDs: ");
+            string strDVD = Console.ReadLine();
+            int intDVD = Convert.ToInt32(strDVD);
+            Console.WriteLine("Enter number of MP3s: ");
+            string strMP3 = Console.ReadLine();
+            int intMP3 = Convert.ToInt32(strMP3);
+            int sum = intTV + intDVD + intMP3;
 
-
+            if (sum == intTV || sum == intDVD || sum == intMP3)
+            {
+                Console.WriteLine(CalculateTotalPrice(intTV, intDVD, intMP3));
+            }
+            else
+            {
+                Console.WriteLine("Error: more than one product selected");
+            }
 
         }
 
         public static double CalculateTotalPrice(int tvQty, int dvdQty, int mp3Qty)
         {
-            //YOUR CODE HERE
-            return 0;
+            int subTotal = 900 * tvQty + 500 * dvdQty + 700 * mp3Qty;
+            if (subTotal > 5000 && subTotal <= 10000)
+            {
+                subTotal -= (900 * tvQty + 500 * dvdQty) * 10 / 100;
+            }
+            else if (subTotal > 10000)
+            {
+                subTotal -= (900 * tvQty + 500 * dvdQty) * 15 / 100;
+            }
+            return subTotal;
 
 
 

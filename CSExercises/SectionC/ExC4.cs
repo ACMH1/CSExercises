@@ -21,16 +21,26 @@ namespace CSExercises
         public static void Main(string[] args)
         {
 
-            //Your code here
-
-
+            string distanceStr = Console.ReadLine();
+            double distanceDbl = Convert.ToDouble(distanceStr);
+            Console.WriteLine("${0:0.00}", CalculateFare(distanceDbl));
 
         }
 
         public static double CalculateFare(double distance)
         {
-            //YOUR CODE HERE
-            return 0;
+            double result = 2.4;
+
+            if (distance > 0.5 && distance <= 9)
+            {
+                result = result + 0.04 * Math.Ceiling((distance - 0.5) * 10);
+            }
+            if (distance > 9)
+            {
+                result = result + 0.4 * 8.5 + 0.05 * Math.Ceiling((distance - 9) * 10);
+            }
+
+                return result;
 
 
 

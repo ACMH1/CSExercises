@@ -21,7 +21,36 @@ namespace CSExercises
             Console.Write("Please enter your age: ");
             int age = Convert.ToInt32(Console.ReadLine());
 
-            //YOUR CODE HERE
+            if (gender == "M")
+            {
+                if (age < 40)
+                {
+                    string title = "Mr.";
+                    Console.WriteLine("Good Morning {0} {1}", title, name);
+                }
+                else
+                {
+                    string title = "Uncle";
+                    Console.WriteLine("Good Morning {0} {1}", title, name);
+                }
+            }
+            else if (gender == "F")
+            {
+                if (age < 40)
+                {
+                    string title = "Ms.";
+                    Console.WriteLine("Good Morning {0} {1}", title, name);
+                }
+                else
+                {
+                    string title = "Aunty";
+                    Console.WriteLine("Good Morning {0} {1}", title, name);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error: gender not found.");
+            }
         }
     }
 }
