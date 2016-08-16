@@ -9,8 +9,13 @@ namespace CSExercises
     {
         public static void Main(string[] args)
         {
-            //YOUR CODE HERE
-            //Hint: you can use ExE4.IsPerfectNumber() method here
+            for (int i = 1; i <= 1000; i++)
+            {
+                string perfection = "not perfect";
+                if (ExE4.IsPerfectNumber(i))
+                    perfection = "perfect";
+                Console.WriteLine("{0} is {1}", i, perfection);
+            }
 
 
 
