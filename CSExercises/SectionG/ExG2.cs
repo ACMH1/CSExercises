@@ -31,8 +31,21 @@ namespace CSExercises
 
         public static bool IsPalindrome(string phrase)
         {
-            //YOUR CODE HERE
-            return false;
+            string[] removeSpaces = phrase.Split();
+            string joinedstring = "";
+            for (int i = 0; i < removeSpaces.Length; i++)
+            {
+                joinedstring += removeSpaces[i];
+            }
+
+            Console.WriteLine(joinedstring);
+            string lowerPhrase = joinedstring.ToLower();
+            for ( int i = 0; i <= lowerPhrase.Length - 1; i++)
+            {
+                if (lowerPhrase[i] != lowerPhrase[lowerPhrase.Length - 1 - i])
+                    return false;
+            }
+            return true;
 
 
 
