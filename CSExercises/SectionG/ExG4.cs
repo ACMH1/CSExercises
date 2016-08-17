@@ -19,9 +19,23 @@ namespace CSExercises
     {
         public static void Main(string[] args)
         {
-            //YOUR CODE HERE
+            string[] nameArr = new string[]
+            {
+                "John",
+                "Venkat",
+                "Mary",
+                "Victor",
+                "Betty"
+            };
 
-
+            int[] marksArr = new int[]
+            {
+                63,
+                29,
+                75,
+                82,
+                55
+            };
 
 
 
