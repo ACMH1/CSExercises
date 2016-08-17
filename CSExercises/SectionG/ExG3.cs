@@ -21,8 +21,18 @@ namespace CSExercises
 
         public static string ToTitleCase(string phrase)
         {
-            //YOUR CODE HERE
-            return null;
+            string[] words = phrase.Split();
+            string result = "";
+            for (int i = 0; i < words.Length; i++)
+            {
+                //Console.WriteLine(words[i]);
+                string caps = words[i][0].ToString();
+                string restOfWord = words[i].Substring(1, words[i].Length - 1);
+                string cappedWord = caps.ToUpper() + restOfWord.ToLower();
+                result += " " + cappedWord;
+            }
+                
+            return result.Trim();
 
 
         }
