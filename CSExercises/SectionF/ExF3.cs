@@ -45,7 +45,7 @@ namespace CSExercises
             int[] total = CalculateTotalMarks(marks);
             double[] avg = CalculateStudentAverage(marks);
             double[] avgPerSubject = CalculateSubjectAverage(marks);
-
+            double[] subjectVariance = CalculateVariance(marks);
 
             for (int row = 0; row < 12; row++)
             {
@@ -56,50 +56,84 @@ namespace CSExercises
             for (int col = 0; col < 4; col++)
             {
                 Console.WriteLine("Avg marks for subject {0}: {1}", col, avgPerSubject[col]);
+                Console.WriteLine("Standard Deviation for subject {0}: {1}", col, Math.Sqrt(subjectVariance[col]));
             }
 
         }
 
         public static int[] CalculateTotalMarks(int[,] marks)
         {
+            int[] total = new int[marks.GetLength(0)];
 
-            int[] total = new int[12];
-
-            //YOUR CODE HERE
+            for (int i = 0; i < marks.GetLength(0); i++)
+            {
+                for (int j = 0; j < marks.GetLength(1); j++)
+                {
+                    total[i] += marks[i, j];
+                }
+            }
             return total;
-
-
         }
 
         public static double[] CalculateStudentAverage(int[,] marks)
         {
-            double[] avg = new double[12];
+            double[] avg = new double[marks.GetLength(0)];
+            int[] total = CalculateTotalMarks(marks);
 
-            //YOUR CODE HERE
+            for (int i = 0; i < marks.GetLength(0); i++)
+            {
+                avg[i] = total[i] / marks.GetLength(1);
+            }
             return avg;
-
-
-
         }
 
         public static double[] CalculateSubjectAverage(int[,] marks)
         {
-            double[] avgPerSubject = new double[4];
+            double[] avgPerSubject = new double[marks.GetLength(1)];
 
-            //YOUR CODE HERE
+            for (int j = 0; j < marks.GetLength(1); j++)
+            {
+                double subTotal = 0;
+
+                for (int i = 0; i < marks.GetLength(0); i++)
+                {
+                    subTotal += marks[i, j];
+                }
+                avgPerSubject[j] = subTotal / marks.GetLength(0);
+            }
+
             return avgPerSubject;
-
-
-
-
-
         }
 
         public static double[] CalculateVariance(int[,] marks)
         {
-            double[] variance = new double[12];
-            //YOUR CODE HERE - bonus questions
+            double[] variance = new double[marks.GetLength(1)];
+
+            double[] subjectAvgs = CalculateSubjectAverage(marks);
+
+            for (int j = 0; j < marks.GetLength(1); j++)
+            {
+                double distFromMean = 0;
+
+                for (int i = 0; i < marks.GetLength(0); i++)
+                {
+                    distFromMean += Math.Pow((marks[i, j] - subjectAvgs[j]), 2);
+                }
+
+                variance[j] = distFromMean / marks.GetLength(0);
+            }
+
             return variance;
         }
+
+        //public static double[] CalculateSD(int[] variance)
+        //{
+        //    double[] result = new double[variance.Length];
+        //    for (int i = 0; i < variance.Length; i++)
+        //    {
+        //        result[i] = Math.Sqrt(variance[i]);
+        //    }
+        //    return result;
+        //}
     }
 }
