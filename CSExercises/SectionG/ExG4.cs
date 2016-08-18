@@ -37,96 +37,62 @@ namespace CSExercises
                 55
             };
 
-            //Console.WriteLine(string.Join("\n", nameArr));
-            //Console.WriteLine(string.Join("\n", marksArr));
+            //PrintArrays(nameArr, marksArr);
+            IntSort(nameArr, marksArr);
+            PrintArrays(nameArr, marksArr);
 
-            string[] nameSort = StringSort(nameArr);
-            int[] markSort = IntSort(marksArr);
-
-            //Console.WriteLine(string.Join("\n", nameSort));
-            //Console.WriteLine(string.Join("\n", markSort));
-
-            //Console.WriteLine(string.Join("\n", nameArr));
-            //Console.WriteLine(string.Join("\n", marksArr));
-
-            //Generate paired report sorted by name
-
-            Console.WriteLine("Name(s)\t\tMark");
-            for (int i = 0; i < nameSort.Length; i++)
-            {
-                for (int j = 0; j < nameArr.Length; j++)
-                {
-                    if (nameSort[i] == nameArr[j])
-                    {
-                        Console.WriteLine("{0}\t\t{1}", nameSort[i], marksArr[j]);
-                    }
-                }
-            }
-
-            Console.WriteLine("\n\n\n");
-
-            //Generate paired report sorted by marks
-
-            Console.WriteLine("Name\t\tMark(s)");
-            for (int i = 0; i < markSort.Length; i++)
-            {
-                for (int j = 0; j < marksArr.Length; j++)
-                {
-                    if (markSort[i] == marksArr[j])
-                    {
-                        Console.WriteLine("{0}\t\t{1}", nameArr[j], markSort[i]);
-                    }
-                }
-            }
+            StringSort(nameArr, marksArr);
+            PrintArrays(nameArr, marksArr);
 
         }
 
-        public static string[] StringSort(string[] strArr)
+        public static void StringSort(string[] nameArr, int[] marksArr)
         {
-            string[] result = new string[strArr.Length];
-            for (int i = 0; i < strArr.Length; i++)
+            for (int nameIndex1 = 0; nameIndex1 < nameArr.Length - 1; nameIndex1++)
             {
-                result[i] = strArr[i];
-            }
-            for (int i = 0; i < result.Length - 1; i++)
-            {
-                for (int j = i + 1; j < result.Length; j++)
+                for (int nameIndex2 = nameIndex1 + 1; nameIndex2 < nameArr.Length; nameIndex2++)
                 {
-                    if (result[i].CompareTo(result[j]) > 0)
+                    if (nameArr[nameIndex1].CompareTo(nameArr[nameIndex2]) > 0)
                     {
-                        string tmp = result[i];
-                        result[i] = result[j];
-                        result[j] = tmp;
+                        string tmp = nameArr[nameIndex1];
+                        nameArr[nameIndex1] = nameArr[nameIndex2];
+                        nameArr[nameIndex2] = tmp;
+
+                        int tmpnum = marksArr[nameIndex1];
+                        marksArr[nameIndex1] = marksArr[nameIndex2];
+                        marksArr[nameIndex2] = tmpnum;
                     }
                 }
-                //Console.WriteLine(result[i]);
             }
-            //Console.WriteLine(result[result.Length - 1]);
-            return result;
         }
 
-        public static int[] IntSort(int[] intArr)
+        public static void IntSort(string[] nameArr, int[] marksArr)
         {
-            int[] result = new int[intArr.Length];
-            for (int i = 0; i < intArr.Length; i++)
+            for (int marksIndex1 = 0; marksIndex1 < marksArr.Length - 1; marksIndex1++)
             {
-                result[i] = intArr[i];
-            }
-            for (int i = 0; i < result.Length - 1; i++)
-            {
-                for (int j = i + 1; j < result.Length; j++)
+                for (int marksIndex2 = marksIndex1 + 1; marksIndex2 < marksArr.Length; marksIndex2++)
                 {
-                    if (result[i].CompareTo(result[j]) < 0)
+                    if (marksArr[marksIndex1] < marksArr[marksIndex2])
                     {
-                        int tmp = result[i];
-                        result[i] = result[j];
-                        result[j] = tmp;
+                        string tmp = nameArr[marksIndex1];
+                        nameArr[marksIndex1] = nameArr[marksIndex2];
+                        nameArr[marksIndex2] = tmp;
+
+                        int tmpnum = marksArr[marksIndex1];
+                        marksArr[marksIndex1] = marksArr[marksIndex2];
+                        marksArr[marksIndex2] = tmpnum;
                     }
                 }
-                //Console.WriteLine(result[i]);
             }
-            //Console.WriteLine(result[result.Length - 1]);
-            return result;
+        }
+
+        public static void PrintArrays(string[] nameArr, int[] marksArr)
+        {
+            Console.WriteLine("Name\tMarks");
+            for (int index = 0; index < nameArr.Length; index++)
+            {
+                Console.WriteLine("{0}\t{1}", nameArr[index], marksArr[index]);
+            }
         }
     }
 }
